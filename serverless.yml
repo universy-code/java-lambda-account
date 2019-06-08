@@ -1,5 +1,5 @@
 
-service: java-lambda-cognito-interface # NOTE: update this with your service name
+service: java-lambda-cognito
 
 provider:
   name: aws
