@@ -5,4 +5,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - ./gradlew build 
+  - ./gradlew clean
+  - ./gradlew build
+  - npm install -g serverless
+  - sls deploy -v --stage qa
