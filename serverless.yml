@@ -4,7 +4,7 @@ service: java-lambda-cognito
 provider:
   name: aws
   runtime: java8
-  profile: serverless
+  profile: ${env:PROFILE, 'serverless'}
   stage: ${opt:stage, 'dev'}
   region: ${env:REGION 'sa-east-1'}
   iamRoleStatements:
