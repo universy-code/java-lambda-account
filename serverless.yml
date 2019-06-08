@@ -1,0 +1,40 @@
+
+service: java-lambda-cognito-interface # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: java8
+  profile: serverless
+  stage: ${opt:stage, 'dev'}
+  region: sa-east-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "cognito-idp:InitiateAuth"
+        - "cognito-idp:RespondToAuthChallenge"
+        - "cognito-idp:SignUp"
+        - "cognito-idp:AdminConfirmSignUp"
+      Resource: "*"
+  environment:
+    STAGE: ${self:provider.stage}
+    CLIENT_ID: 17kp125di2u7jm51dndv83s8gg
+    POOL_ID: us-east-1_NSErOt8mh
+    AWS_COGNITO_REGION: us-east-1
+
+package:
+  artifact: build/distributions/${self:service}-1.0.zip
+
+functions:
+  java-lambda-cognito-interface-authenticator:
+    name: ${self:provider.stage}-${self:service}-authenticator
+    handler: com.universy.auth.UserAuthenticatorHandler
+
+
+  java-lambda-cognito-interface-creator:
+    name: ${self:provider.stage}-${self:service}-creator
+    handler: com.universy.auth.UserCreationHandler
+
+
+
+
+

@@ -1,0 +1,97 @@
+apply plugin: 'java'
+
+allprojects{
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+group 'com.universy'
+version '1.0'
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+    // AWS SDK
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: awsLambdaJavaCoreVersion
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-log4j2', version: awsLambdaJavaLog4j2Version
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-cognitoidp', version: awsJavaSdkCognitoIdpVersion
+
+    // Log4j2
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4JVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
+
+    // Universy
+    compile "com.github.universy-code:java-lambda-api-handlers:${javaCommonLambdaVersion}"
+
+    // JUnit
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+
+    // Powermock
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: powerMockVersion
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: powerMockVersion
+    
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+
+    manifest {
+    }
+}
+
+task copyClassesToLocalRunFolder(type: Copy) {
+    from(sourceSets.main.output) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    into buildDir.path + "/run"
+}
+
+task copyDependenciesToLocalRunFolder(type: Copy) {
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    into buildDir.path + "/run"
+}
+
+
+task buildForLocalRun() {
+    doLast{
+        println "Built for local run under build/run"
+    }
+}
+
+buildForLocalRun.dependsOn build
+buildForLocalRun.dependsOn copyDependenciesToLocalRunFolder
+buildForLocalRun.dependsOn copyClassesToLocalRunFolder
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
+
+
