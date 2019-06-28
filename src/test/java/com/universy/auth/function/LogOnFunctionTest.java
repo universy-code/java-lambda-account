@@ -7,7 +7,6 @@ import com.universy.auth.function.cognito.CognitoCommand;
 import com.universy.auth.function.cognito.wrappers.AdminConfirmSignUpResultWrapper;
 import com.universy.auth.function.exceptions.MailFormatException;
 import com.universy.auth.function.exceptions.PasswordFormatException;
-import com.universy.auth.function.exceptions.UnexpectedFailureException;
 import com.universy.auth.function.exceptions.creation.InvalidUserPasswordException;
 import com.universy.auth.function.exceptions.creation.UserAlreadyExistsException;
 import com.universy.auth.function.exceptions.creation.UserNotCreatedException;
@@ -27,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserCreationFunctionTest {
+public class LogOnFunctionTest {
 
     private static final String CORRECT_MAIL = "mail@example.com";
     private static final String INCORRECT_MAIL = "mail_example.com";
@@ -45,7 +44,7 @@ public class UserCreationFunctionTest {
 
     @Before
     public void setUp(){
-        createFunction = new UserCreationFunction(signUpCommand, authFunction);
+        createFunction = new LogOnFunction(signUpCommand, authFunction);
     }
 
     @Test
@@ -110,16 +109,6 @@ public class UserCreationFunctionTest {
 
         Mockito.when(signUpCommand.executeCognitoCommand(any()))
                 .thenThrow(new InvalidParameterException(Strings.EMPTY));
-
-        createFunction.apply(user);
-    }
-
-    @Test(expected = UnexpectedFailureException.class)
-    public void userCreationUnexpectedException(){
-        User user = createUser(CORRECT_MAIL, CORRECT_PASSWORD);
-
-        Mockito.when(signUpCommand.executeCognitoCommand(any()))
-                .thenThrow(new RuntimeException(Strings.EMPTY));
 
         createFunction.apply(user);
     }

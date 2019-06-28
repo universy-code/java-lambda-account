@@ -1,11 +1,11 @@
 package com.universy.auth.function.exceptions.authentication;
 
 import com.universy.auth.model.User;
-import com.universy.common.lambda.api.exceptions.StatusCodeTypeException;
+import com.universy.lambda.api.handlers.exceptions.UniversyException;
 
 import java.net.HttpURLConnection;
 
-public class UserNotAuthorizedException extends StatusCodeTypeException {
+public class UserNotAuthorizedException extends UniversyException {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "Incorrect authentication data for user '%s'.";
 

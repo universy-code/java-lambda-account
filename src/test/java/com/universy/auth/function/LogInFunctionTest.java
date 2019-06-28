@@ -6,7 +6,6 @@ import com.universy.auth.function.cognito.CognitoCommand;
 import com.universy.auth.function.cognito.wrappers.InitiateAuthResultWrapper;
 import com.universy.auth.function.exceptions.MailFormatException;
 import com.universy.auth.function.exceptions.PasswordFormatException;
-import com.universy.auth.function.exceptions.UnexpectedFailureException;
 import com.universy.auth.function.exceptions.authentication.UserNotAuthorizedException;
 import com.universy.auth.function.exceptions.authentication.UserNotFoundInPoolException;
 import com.universy.auth.model.Token;
@@ -25,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserAuthenticationFunctionTest {
+public class LogInFunctionTest {
 
     private static final String CORRECT_MAIL = "mail@example.com";
     private static final String INCORRECT_MAIL = "mail_example.com";
@@ -40,7 +39,7 @@ public class UserAuthenticationFunctionTest {
 
     @Before
     public void setUp(){
-        authFunction = new UserAuthenticationFunction(authCommand);
+        authFunction = new LogInFunction(authCommand);
     }
 
     @Test
@@ -77,16 +76,6 @@ public class UserAuthenticationFunctionTest {
 
         Mockito.when(authCommand.executeCognitoCommand(any()))
                 .thenThrow(new NotAuthorizedException(Strings.EMPTY));
-
-        authFunction.apply(user);
-    }
-
-    @Test(expected = UnexpectedFailureException.class)
-    public void userAuthenticationUnexpectedException(){
-        User user = createUser(CORRECT_MAIL, CORRECT_PASSWORD);
-
-        Mockito.when(authCommand.executeCognitoCommand(any()))
-                .thenThrow(new RuntimeException(Strings.EMPTY));
 
         authFunction.apply(user);
     }

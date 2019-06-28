@@ -1,11 +1,11 @@
 package com.universy.auth.function.exceptions.creation;
 
 import com.universy.auth.model.User;
-import com.universy.common.lambda.api.exceptions.StatusCodeTypeException;
+import com.universy.lambda.api.handlers.exceptions.UniversyException;
 
 import java.net.HttpURLConnection;
 
-public class UserNotCreatedException extends StatusCodeTypeException {
+public class UserNotCreatedException extends UniversyException {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "The user %s could not be created.";
 

@@ -1,16 +1,25 @@
 Resources:
-  retriever:
+  logOn:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./build/run
-      Handler: com.universy.student.data.RetrieverHandler
+      Handler: com.universy.auth.LogOnHandler
       Runtime: java8
       MemorySize: 512
       Timeout: 300
       Environment:
         Variables:
           AWS_REGION: sa-east-1
-          STAGE: local
-          DYNAMO_URL: http://localstack:4569
-          AWS_ACCESS_KEY_ID: local
-          AWS_SECRET_ACCESS_KEY: local
+
+  logIn:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./build/run
+      Handler: com.universy.auth.LogInHandler
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Environment:
+        Variables:
+          AWS_REGION: sa-east-1
+

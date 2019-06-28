@@ -25,14 +25,14 @@ package:
   artifact: build/distributions/${self:service}-1.0.zip
 
 functions:
-  java-lambda-cognito-interface-authenticator:
-    name: ${self:provider.stage}-${self:service}-authenticator
-    handler: com.universy.auth.UserAuthenticatorHandler
+  java-lambda-cognito-interface-login:
+    name: ${self:provider.stage}-${self:service}-login
+    handler: com.universy.auth.LogInHandler
 
 
-  java-lambda-cognito-interface-creator:
-    name: ${self:provider.stage}-${self:service}-creator
-    handler: com.universy.auth.UserCreationHandler
+  java-lambda-cognito-interface-logon:
+    name: ${self:provider.stage}-${self:service}-logon
+    handler: com.universy.auth.LogOnHandler
 
 
 

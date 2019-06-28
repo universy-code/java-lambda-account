@@ -1,7 +1,6 @@
 package com.universy.auth.function.validator;
 
 
-import com.amazonaws.services.cognitoidp.model.CreateUserPoolRequest;
 import com.universy.auth.function.exceptions.MailFormatException;
 import com.universy.auth.function.exceptions.PasswordFormatException;
 import com.universy.auth.model.User;

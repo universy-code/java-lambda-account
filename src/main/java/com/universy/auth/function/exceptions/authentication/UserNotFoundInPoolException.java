@@ -1,11 +1,11 @@
 package com.universy.auth.function.exceptions.authentication;
 
 import com.universy.auth.model.User;
-import com.universy.common.lambda.api.exceptions.StatusCodeTypeException;
+import com.universy.lambda.api.handlers.exceptions.UniversyException;
 
 import java.net.HttpURLConnection;
 
-public class UserNotFoundInPoolException extends StatusCodeTypeException {
+public class UserNotFoundInPoolException extends UniversyException {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "The user '%s' was not found in user pool.";
 

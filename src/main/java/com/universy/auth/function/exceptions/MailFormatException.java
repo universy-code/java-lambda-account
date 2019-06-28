@@ -1,10 +1,10 @@
 package com.universy.auth.function.exceptions;
 
-import com.universy.common.lambda.api.exceptions.StatusCodeTypeException;
+import com.universy.lambda.api.handlers.exceptions.UniversyException;
 
 import java.net.HttpURLConnection;
 
-public class MailFormatException extends StatusCodeTypeException {
+public class MailFormatException extends UniversyException {
 
     private static final String ERROR_MESSAGE_EXCEPTION = "Mail has incorrect format: %s.";
 

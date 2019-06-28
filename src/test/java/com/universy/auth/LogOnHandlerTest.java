@@ -1,6 +1,6 @@
 package com.universy.auth;
 
-import com.universy.auth.function.UserAuthenticationFunction;
+import com.universy.auth.function.LogOnFunction;
 import com.universy.auth.model.Token;
 import com.universy.auth.model.User;
 import org.junit.Before;
@@ -8,19 +8,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserAuthenticationHandlerTest {
+public class LogOnHandlerTest {
 
-    private UserAuthenticatorHandler handler;
+    private LogOnHandler handler;
 
     @Before
     public void setUp(){
-        handler = new UserAuthenticatorHandler();
+        handler = new LogOnHandler();
     }
 
     @Test
     public void testReturnedTypes(){
         assertEquals(User.class, handler.getInputClass());
-        assertEquals(Token.class, handler.getOutputClass());
-        assertEquals(UserAuthenticationFunction.class, handler.getFunctionClass());
+        assertEquals(LogOnFunction.class, handler.getFunction().getClass());
     }
 }

@@ -1,11 +1,11 @@
 package com.universy.auth.function.exceptions.creation;
 
 import com.universy.auth.model.User;
-import com.universy.common.lambda.api.exceptions.StatusCodeTypeException;
+import com.universy.lambda.api.handlers.exceptions.UniversyException;
 
 import java.net.HttpURLConnection;
 
-public class UserAlreadyExistsException extends StatusCodeTypeException {
+public class UserAlreadyExistsException extends UniversyException {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "User '%s' already exists.";
 
