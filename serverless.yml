@@ -17,9 +17,9 @@ provider:
       Resource: "*"
   environment:
     STAGE: ${self:provider.stage}
-    CLIENT_ID: ${env:CLIENT_ID, opt:client}
-    POOL_ID: ${env:POOL_ID, opt:pool}
-    AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION, opt:cregion}
+    CLIENT_ID: ${env:CLIENT_ID}
+    POOL_ID: ${env:POOL_ID}
+    AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION}
 
 package:
   artifact: build/distributions/${self:service}-1.0.zip
