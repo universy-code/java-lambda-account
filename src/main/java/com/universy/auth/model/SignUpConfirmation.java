@@ -1,8 +1,8 @@
 package com.universy.auth.model;
 
-public class User {
+public class SignUpConfirmation {
     private String username;
-    private String password;
+    private String code;
 
     public String getUsername() {
         return username;
@@ -12,11 +12,11 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCode() {
+        return code;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

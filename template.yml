@@ -1,17 +1,31 @@
 Resources:
-  logOn:
+  logOnPost:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./build/run
-      Handler: com.universy.auth.LogOnHandler
+      Handler: com.universy.auth.handler.logon.LogOnPostHandler
       Runtime: java8
       MemorySize: 512
       Timeout: 300
       Environment:
         Variables:
-          AWS_REGION: sa-east-1
+          AWS_COGNITO_REGION: us-east-1
+          CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
 
-  logIn:
+  verifyPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./build/run
+      Handler: com.universy.auth.handler.verify.VerifyPostHandler
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Environment:
+        Variables:
+          AWS_COGNITO_REGION: us-east-1
+          CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
+
+  logInPost:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./build/run
@@ -23,5 +37,4 @@ Resources:
         Variables:
           AWS_REGION: sa-east-1
           AWS_COGNITO_REGION: us-east-1
-          CLIENT_ID
 
