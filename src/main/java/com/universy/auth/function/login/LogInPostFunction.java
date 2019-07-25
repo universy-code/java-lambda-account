@@ -7,8 +7,8 @@ import com.universy.auth.cognito.actions.InitiateAuth;
 import com.universy.auth.cognito.client.CloudCognitoClientSupplier;
 import com.universy.auth.cognito.client.CognitoClientSupplier;
 import com.universy.auth.cognito.wrappers.InitiateAuthResultWrapper;
-import com.universy.auth.function.exceptions.login.UserNotAuthorizedException;
-import com.universy.auth.function.exceptions.login.UserNotFoundInPoolException;
+import com.universy.auth.function.login.exceptions.UserNotAuthorizedException;
+import com.universy.auth.function.exceptions.UserNotFoundInPoolException;
 import com.universy.auth.model.Token;
 import com.universy.auth.model.User;
 

@@ -1,4 +1,4 @@
-package com.universy.auth;
+package com.universy.auth.handler.logon;
 
 import com.universy.auth.function.logon.LogOnPostConsumer;
 import com.universy.auth.handler.logon.LogOnPostHandler;
@@ -20,6 +20,6 @@ public class LogOnPostHandlerTest {
     @Test
     public void testReturnedTypes(){
         assertEquals(Person.class, handler.getInputClass());
-        assertEquals(LogOnPostConsumer.class, handler.getFunction().getClass());
+        assertEquals(LogOnPostConsumer.class, handler.getConsumer().getClass());
     }
 }

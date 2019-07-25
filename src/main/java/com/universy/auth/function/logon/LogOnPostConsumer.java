@@ -9,9 +9,9 @@ import com.universy.auth.cognito.actions.SignUp;
 import com.universy.auth.cognito.client.CloudCognitoClientSupplier;
 import com.universy.auth.cognito.client.CognitoClientSupplier;
 import com.universy.auth.cognito.wrappers.ResultWrapper;
-import com.universy.auth.function.exceptions.logon.InvalidUserParametersException;
-import com.universy.auth.function.exceptions.logon.InvalidUserPasswordException;
-import com.universy.auth.function.exceptions.logon.UserAlreadyExistsException;
+import com.universy.auth.function.logon.exceptions.InvalidUserParametersException;
+import com.universy.auth.function.logon.exceptions.InvalidUserPasswordException;
+import com.universy.auth.function.logon.exceptions.UserAlreadyExistsException;
 import com.universy.auth.model.Person;
 
 import java.util.function.Consumer;

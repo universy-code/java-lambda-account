@@ -1,5 +1,5 @@
 {
-  "body":"{\"username\" :\"lore\",\"password\":\"lore1234\",\"familyName\":\"Ledesma\",\"givenName\":\"Lorena\", \"phoneNumber\":\"+5493513295304\"}",
+  "body":"{\"username\" :\"guidote\",\"password\":\"guidote1234\",\"familyName\":\"Henry\",\"givenName\":\"Guido\", \"phoneNumber\":\"+5493513288231\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "GET",

@@ -1,4 +1,4 @@
-package com.universy.auth.function.exceptions.logon;
+package com.universy.auth.function.logon.exceptions;
 
 import com.universy.lambda.api.handlers.exceptions.UniversyException;
 

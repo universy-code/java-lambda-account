@@ -1,8 +1,7 @@
 package com.universy.auth.model;
 
-public class User implements UsernameContainer {
+public class ResendConfirmation implements UsernameContainer {
     private String username;
-    private String password;
 
     @Override
     public String getUsername() {
@@ -11,13 +10,5 @@ public class User implements UsernameContainer {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

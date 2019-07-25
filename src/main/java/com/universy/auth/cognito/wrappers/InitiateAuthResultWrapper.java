@@ -2,7 +2,7 @@ package com.universy.auth.cognito.wrappers;
 
 import com.amazonaws.services.cognitoidp.model.AuthenticationResultType;
 import com.amazonaws.services.cognitoidp.model.InitiateAuthResult;
-import com.universy.auth.function.exceptions.login.NoTokenFoundException;
+import com.universy.auth.function.login.exceptions.NoTokenFoundException;
 
 import java.util.Optional;
 

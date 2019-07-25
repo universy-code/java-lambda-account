@@ -25,6 +25,19 @@ Resources:
           AWS_COGNITO_REGION: us-east-1
           CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
 
+  verifyGet:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./build/run
+      Handler: com.universy.auth.handler.verify.VerifyGetHandler
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Environment:
+        Variables:
+          AWS_COGNITO_REGION: us-east-1
+          CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
+
   logInPost:
     Type: AWS::Serverless::Function
     Properties:

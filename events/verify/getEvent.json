@@ -1,11 +1,11 @@
 {
-  "body":"{\"username\" :\"guidote\", \"code\":\"132713\"}",
+  "body":"{\"username\" :\"lore\", \"code\":\"286741\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "GET",
   "isBase64Encoded": false,
   "queryStringParameters": {
-    "gonza":"Gonza"
+    "username":"gonzalito1"
   },
   "pathParameters": {
     "proxy": "/path/to/resource"
