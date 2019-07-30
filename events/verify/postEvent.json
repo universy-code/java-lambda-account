@@ -1,5 +1,5 @@
 {
-  "body":"{\"username\" :\"guidote\", \"code\":\"132713\"}",
+  "body":"{\"username\" :\"panchin\", \"code\":\"786578\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "GET",

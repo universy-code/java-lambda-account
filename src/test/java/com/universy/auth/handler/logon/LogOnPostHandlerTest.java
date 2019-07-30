@@ -1,7 +1,6 @@
 package com.universy.auth.handler.logon;
 
 import com.universy.auth.function.logon.LogOnPostConsumer;
-import com.universy.auth.handler.logon.LogOnPostHandler;
 import com.universy.auth.model.Person;
 import org.junit.Before;
 import org.junit.Test;

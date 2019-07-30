@@ -3,11 +3,9 @@ package com.universy.auth.cognito.actions;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.AuthFlowType;
 import com.amazonaws.services.cognitoidp.model.InitiateAuthRequest;
-import com.amazonaws.services.cognitoidp.model.InitiateAuthResult;
 import com.universy.auth.cognito.client.CognitoClientSupplier;
 import com.universy.auth.cognito.wrappers.InitiateAuthResultWrapper;
 import com.universy.auth.environment.Environment;
-import com.universy.auth.model.Person;
 import com.universy.auth.model.User;
 
 public class InitiateAuth implements CognitoAction<User, InitiateAuthResultWrapper> {
