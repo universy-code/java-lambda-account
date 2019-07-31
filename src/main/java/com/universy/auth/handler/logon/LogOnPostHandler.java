@@ -4,10 +4,12 @@ import com.universy.auth.function.logon.LogOnPostConsumer;
 import com.universy.auth.model.Person;
 import com.universy.lambda.api.handlers.handler.apigateway.consumer.ConsumerHandler;
 
-public class LogOnPostHandler extends ConsumerHandler<Person, LogOnPostConsumer> {
+import java.util.function.Consumer;
+
+public class LogOnPostHandler extends ConsumerHandler<Person> {
 
     @Override
-    protected LogOnPostConsumer getConsumer() {
+    protected Consumer<Person> getConsumer() {
         return new LogOnPostConsumer();
     }
 

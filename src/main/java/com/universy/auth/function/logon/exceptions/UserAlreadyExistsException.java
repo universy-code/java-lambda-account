@@ -1,11 +1,11 @@
 package com.universy.auth.function.logon.exceptions;
 
 import com.universy.auth.model.Person;
-import com.universy.lambda.api.handlers.exceptions.UniversyException;
+import com.universy.lambda.api.handlers.exceptions.BusinessException;
 
 import java.net.HttpURLConnection;
 
-public class UserAlreadyExistsException extends UniversyException {
+public class UserAlreadyExistsException extends BusinessException {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "Person '%s' already exists.";
 
@@ -13,7 +13,7 @@ public class UserAlreadyExistsException extends UniversyException {
         this(String.format(ERROR_MESSAGE_TEMPLATE, person.getUsername()));
     }
 
-    private UserAlreadyExistsException(String message){
+    private UserAlreadyExistsException(String message) {
         super(message, HttpURLConnection.HTTP_CONFLICT);
     }
 }

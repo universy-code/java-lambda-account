@@ -5,10 +5,12 @@ import com.universy.auth.model.Token;
 import com.universy.auth.model.User;
 import com.universy.lambda.api.handlers.handler.apigateway.function.FunctionHandler;
 
-public class LogInPostHandler extends FunctionHandler<User, Token, LogInPostFunction> {
+import java.util.function.Function;
+
+public class LogInPostHandler extends FunctionHandler<User, Token> {
 
     @Override
-    protected LogInPostFunction getFunction() {
+    protected Function<User, Token> getFunction() {
         return new LogInPostFunction();
     }
 

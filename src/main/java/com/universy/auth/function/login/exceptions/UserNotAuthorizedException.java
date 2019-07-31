@@ -1,11 +1,11 @@
 package com.universy.auth.function.login.exceptions;
 
 import com.universy.auth.model.User;
-import com.universy.lambda.api.handlers.exceptions.UniversyException;
+import com.universy.lambda.api.handlers.exceptions.BusinessException;
 
 import java.net.HttpURLConnection;
 
-public class UserNotAuthorizedException extends UniversyException {
+public class UserNotAuthorizedException extends BusinessException {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "Incorrect login data for user '%s'.";
 

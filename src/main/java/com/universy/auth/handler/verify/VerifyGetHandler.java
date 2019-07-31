@@ -3,12 +3,14 @@ package com.universy.auth.handler.verify;
 import com.universy.auth.function.verify.VerifyGetConsumer;
 import com.universy.auth.model.ResendConfirmation;
 import com.universy.lambda.api.handlers.handler.apigateway.consumer.ConsumerHandler;
+import com.universy.lambda.api.handlers.handler.input.InputType;
 
-public class VerifyGetHandler extends ConsumerHandler<ResendConfirmation, VerifyGetConsumer> {
+import java.util.function.Consumer;
 
+public class VerifyGetHandler extends ConsumerHandler<ResendConfirmation> {
 
     @Override
-    protected VerifyGetConsumer getConsumer() {
+    protected Consumer<ResendConfirmation> getConsumer() {
         return new VerifyGetConsumer();
     }
 
@@ -18,7 +20,7 @@ public class VerifyGetHandler extends ConsumerHandler<ResendConfirmation, Verify
     }
 
     @Override
-    protected boolean inputFromBody() {
-        return Boolean.FALSE;
+    protected InputType inputType() {
+        return InputType.QUERY_PARAMS;
     }
 }

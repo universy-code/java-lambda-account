@@ -1,10 +1,10 @@
 package com.universy.auth.function.verify.exceptions;
 
-import com.universy.lambda.api.handlers.exceptions.UniversyException;
+import com.universy.lambda.api.handlers.exceptions.BusinessException;
 
 import java.net.HttpURLConnection;
 
-public class IncorrectCodeException extends UniversyException {
+public class IncorrectCodeException extends BusinessException {
 
     private static final String ERROR_MESSAGE = "The code sent is incorrect.";
 

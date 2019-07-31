@@ -1,10 +1,10 @@
 package com.universy.auth.function.logon.exceptions;
 
-import com.universy.lambda.api.handlers.exceptions.UniversyException;
+import com.universy.lambda.api.handlers.exceptions.BusinessException;
 
 import java.net.HttpURLConnection;
 
-public class InvalidUserPasswordException extends UniversyException {
+public class InvalidUserPasswordException extends BusinessException {
 
     private static final String ERROR_MESSAGE = "Password has incorrect format.";
 

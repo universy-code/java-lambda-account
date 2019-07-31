@@ -2,6 +2,7 @@ package com.universy.auth.handler.login;
 
 import com.universy.auth.function.login.LogInPostFunction;
 import com.universy.auth.model.Person;
+import com.universy.auth.model.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class LogInPostHandlerTest {
 
     @Test
     public void testReturnedTypes(){
-        assertEquals(Person.class, handler.getInputClass());
+        assertEquals(User.class, handler.getInputClass());
         assertEquals(LogInPostFunction.class, handler.getFunction().getClass());
     }
 }

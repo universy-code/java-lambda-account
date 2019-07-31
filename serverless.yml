@@ -11,30 +11,31 @@ provider:
     - Effect: "Allow"
       Action:
         - "cognito-idp:InitiateAuth"
-        - "cognito-idp:RespondToAuthChallenge"
         - "cognito-idp:SignUp"
-        - "cognito-idp:AdminConfirmSignUp"
+        - "cognito-idp:ConfirmSignUp"
+        - "cognito-idp:ResendConfirmationCode"
       Resource: "*"
   environment:
     STAGE: ${self:provider.stage}
-    CLIENT_ID: ${env:CLIENT_ID}
-    POOL_ID: ${env:POOL_ID}
-    AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION}
+    CLIENT_ID: ${env:POOL_ID}
+    AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION, 'us-east-1'}
 
 package:
   artifact: build/distributions/${self:service}-1.0.zip
 
 functions:
-  java-lambda-cognito-interface-login:
-    name: ${self:provider.stage}-${self:service}-login
-    handler: com.universy.auth.LogInHandler
+  loginPost:
+    name: ${self:provider.stage}-${self:service}-login-post
+    handler: com.universy.auth.handler.login.LogInPostHandler
 
+  logonPost:
+    name: ${self:provider.stage}-${self:service}-logon-post
+    handler: com.universy.auth.handler.logon.LogOnPostHandler
 
-  java-lambda-cognito-interface-logon:
-    name: ${self:provider.stage}-${self:service}-logon
-    handler: com.universy.auth.LogOnHandler
+  verifyPost:
+    name: ${self:provider.stage}-${self:service}-verify-post
+    handler: com.universy.auth.handler.verify.VerifyPostHandler
 
-
-
-
-
+  verifyGet:
+    name: ${self:provider.stage}-${self:service}-verify-get
+    handler: com.universy.auth.handler.verify.VerifyGetHandler

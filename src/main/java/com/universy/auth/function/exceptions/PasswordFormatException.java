@@ -1,10 +1,10 @@
 package com.universy.auth.function.exceptions;
 
-import com.universy.lambda.api.handlers.exceptions.UniversyException;
+import com.universy.lambda.api.handlers.exceptions.BusinessException;
 
 import java.net.HttpURLConnection;
 
-public class PasswordFormatException extends UniversyException {
+public class PasswordFormatException extends BusinessException {
 
     private static final String ERROR_MESSAGE_EXCEPTION = "Password is empty or has incorrect format.";
 

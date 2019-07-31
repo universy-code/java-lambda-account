@@ -1,17 +1,7 @@
 package com.universy.auth.model;
 
-public class SignUpConfirmation implements UsernameContainer {
-    private String username;
+public class SignUpConfirmation extends User {
     private String code;
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getCode() {
         return code;

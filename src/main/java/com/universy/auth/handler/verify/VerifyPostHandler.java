@@ -5,10 +5,12 @@ import com.universy.auth.model.SignUpConfirmation;
 import com.universy.auth.model.Token;
 import com.universy.lambda.api.handlers.handler.apigateway.function.FunctionHandler;
 
-public class VerifyPostHandler extends FunctionHandler<SignUpConfirmation, Token, VerifyPostFunction> {
+import java.util.function.Function;
+
+public class VerifyPostHandler extends FunctionHandler<SignUpConfirmation, Token> {
 
     @Override
-    protected VerifyPostFunction getFunction() {
+    protected Function<SignUpConfirmation, Token> getFunction() {
         return new VerifyPostFunction();
     }
 
