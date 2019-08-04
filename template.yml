@@ -10,7 +10,7 @@ Resources:
       Environment:
         Variables:
           AWS_COGNITO_REGION: us-east-1
-          CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
+          CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
 
   verifyPost:
     Type: AWS::Serverless::Function
@@ -23,7 +23,7 @@ Resources:
       Environment:
         Variables:
           AWS_COGNITO_REGION: us-east-1
-          CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
+          CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
 
   verifyGet:
     Type: AWS::Serverless::Function
@@ -36,13 +36,13 @@ Resources:
       Environment:
         Variables:
           AWS_COGNITO_REGION: us-east-1
-          CLIENT_ID: 11vbom0p7ijg4n3ke7i7e0q4fo
+          CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
 
   logInPost:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./build/run
-      Handler: com.universy.auth.LogInHandler
+      Handler: com.universy.auth.handler.login.LogInPostHandler
       Runtime: java8
       MemorySize: 512
       Timeout: 300
@@ -50,4 +50,4 @@ Resources:
         Variables:
           AWS_REGION: sa-east-1
           AWS_COGNITO_REGION: us-east-1
-
+          CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21

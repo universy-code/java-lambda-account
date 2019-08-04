@@ -1,18 +1,17 @@
 package com.universy.auth.model;
 
 public class Token {
-    private final String mail;
+    private final String username;
     private final String token;
 
-    public Token(String mail, String token) {
-        this.mail = mail;
+    public Token(String username, String token) {
+        this.username = username;
         this.token = token;
     }
 
-    public String getMail() {
-        return mail;
+    public String getUsername() {
+        return username;
     }
-
 
     public String getToken() {
         return token;

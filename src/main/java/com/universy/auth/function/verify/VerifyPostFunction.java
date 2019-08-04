@@ -9,9 +9,11 @@ import com.universy.auth.cognito.client.CloudCognitoClientSupplier;
 import com.universy.auth.cognito.client.CognitoClientSupplier;
 import com.universy.auth.cognito.wrappers.ResultWrapper;
 import com.universy.auth.function.exceptions.UserNotFoundInPoolException;
+import com.universy.auth.function.login.LogInPostFunction;
 import com.universy.auth.function.verify.exceptions.IncorrectCodeException;
 import com.universy.auth.model.SignUpConfirmation;
 import com.universy.auth.model.Token;
+import com.universy.auth.model.User;
 
 import java.util.function.Function;
 
@@ -41,7 +43,11 @@ public class VerifyPostFunction implements Function<SignUpConfirmation, Token> {
             throw new UserNotFoundInPoolException(signUpConfirmation);
         }
 
-        // TODO: Should we login here or should it be done in another HTTP request?
-        return null;
+        return loginUser(signUpConfirmation);
+    }
+
+    private Token loginUser(SignUpConfirmation signUpConfirmation) {
+        Function<User, Token> loginFunction = new LogInPostFunction();
+        return loginFunction.apply(signUpConfirmation);
     }
 }

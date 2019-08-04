@@ -31,7 +31,7 @@ public class SignUp implements CognitoAction<Person, ResultWrapper<SignUpResult>
                         new CognitoAttributeBuilder()
                                 .withFamilyName(person.getFamilyName())
                                 .withGivenName(person.getGivenName())
-                                .withPhoneNumber(person.getPhoneNumber())
+                                .withEmail(person.getEmail())
                                 .build()
                 );
     }

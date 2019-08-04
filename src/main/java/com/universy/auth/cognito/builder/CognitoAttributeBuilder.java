@@ -14,10 +14,10 @@ public class CognitoAttributeBuilder {
         attributes = new ArrayList<>();
     }
 
-    public CognitoAttributeBuilder withPhoneNumber(String phoneNumber) {
+    public CognitoAttributeBuilder withEmail(String phoneNumber) {
         attributes.add(
                 new AttributeType()
-                        .withName(Attributes.PHONE_NUMBER_ATTRIBUTE)
+                        .withName(Attributes.EMAIL_ATTRIBUTE)
                         .withValue(phoneNumber)
         );
         return this;

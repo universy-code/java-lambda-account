@@ -3,7 +3,7 @@ package com.universy.auth.model;
 public class Person extends User {
     private String familyName;
     private String givenName;
-    private String phoneNumber;
+    private String email;
 
     public String getFamilyName() {
         return familyName;
@@ -21,11 +21,11 @@ public class Person extends User {
         this.givenName = givenName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
