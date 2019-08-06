@@ -1,5 +1,5 @@
 
-service: java-lambda-cognito
+service: java-lambda-account
 
 provider:
   name: aws
