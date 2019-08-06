@@ -34,11 +34,8 @@ public class LogOnPostConsumer implements Consumer<Person> {
 
     @Override
     public void accept(Person person) {
-
         try {
-
             signUpAction.perform(person);
-
         } catch (UsernameExistsException e) {
             throw new UserAlreadyExistsException(person);
         } catch (InvalidPasswordException e) {
