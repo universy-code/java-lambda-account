@@ -1,4 +1,4 @@
-package com.universy.account.function.login.exceptions;
+package com.universy.account.cognito.extractor.exceptions;
 
 import com.universy.lambda.api.handlers.exceptions.BusinessException;
 

@@ -3,29 +3,32 @@ package com.universy.account.cognito.actions;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.ConfirmSignUpRequest;
 import com.amazonaws.services.cognitoidp.model.ConfirmSignUpResult;
-import com.universy.account.cognito.client.CognitoClientSupplier;
-import com.universy.account.cognito.wrappers.ResultWrapper;
-import com.universy.account.environment.Environment;
 import com.universy.account.model.SignUpConfirmation;
+import com.universy.cognito.CognitoIdentityProviderFactory;
+import com.universy.cognito.actions.CognitoAction;
+import com.universy.cognito.environment.CognitoEnvironment;
 
-public class ConfirmSignUp implements CognitoAction<SignUpConfirmation, ResultWrapper<ConfirmSignUpResult>> {
+public class ConfirmSignUp implements CognitoAction<SignUpConfirmation, ConfirmSignUpResult> {
 
     private final AWSCognitoIdentityProvider identityProvider;
 
-    public ConfirmSignUp(CognitoClientSupplier clientSupplier) {
-        identityProvider = clientSupplier.get();
+    public ConfirmSignUp() {
+        this(CognitoIdentityProviderFactory.createIdentityProvider());
     }
 
+    public ConfirmSignUp(AWSCognitoIdentityProvider identityProvider) {
+        this.identityProvider = identityProvider;
+    }
 
     @Override
-    public ResultWrapper<ConfirmSignUpResult> perform(SignUpConfirmation signUpConfirmation) {
+    public ConfirmSignUpResult perform(SignUpConfirmation signUpConfirmation) {
         ConfirmSignUpRequest confirmSignUpRequest = createConfirmSignUpRequest(signUpConfirmation);
-        return ResultWrapper.wrap(identityProvider.confirmSignUp(confirmSignUpRequest));
+        return identityProvider.confirmSignUp(confirmSignUpRequest);
     }
 
     private ConfirmSignUpRequest createConfirmSignUpRequest(SignUpConfirmation signUpConfirmation) {
         return new ConfirmSignUpRequest()
-                .withClientId(Environment.getClientID())
+                .withClientId(CognitoEnvironment.getClientID())
                 .withConfirmationCode(signUpConfirmation.getCode())
                 .withUsername(signUpConfirmation.getUsername());
     }

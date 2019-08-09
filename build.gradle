@@ -30,7 +30,8 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
 
     // Universy
-    compile "com.github.universy-code:java-lambda-api-handlers:${javaLambdaApiHandlersVersion}"
+    compile "com.github.uvsy-aws-backend:java-lambda-api-handlers:${javaLambdaApiHandlersVersion}"
+    compile "com.github.uvsy-aws-backend:java-cognito-client:${javaCognitoClientVersion}"
 
     // JUnit
     testCompile group: 'junit', name: 'junit', version: junitVersion

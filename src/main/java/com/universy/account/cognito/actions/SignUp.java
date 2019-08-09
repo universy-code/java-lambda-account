@@ -4,27 +4,31 @@ import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.SignUpRequest;
 import com.amazonaws.services.cognitoidp.model.SignUpResult;
 import com.universy.account.cognito.builder.CognitoAttributeBuilder;
-import com.universy.account.cognito.client.CognitoClientSupplier;
-import com.universy.account.cognito.wrappers.ResultWrapper;
 import com.universy.account.model.Person;
-import com.universy.account.environment.Environment;
+import com.universy.cognito.CognitoIdentityProviderFactory;
+import com.universy.cognito.actions.CognitoAction;
+import com.universy.cognito.environment.CognitoEnvironment;
 
-public class SignUp implements CognitoAction<Person, ResultWrapper<SignUpResult>> {
+public class SignUp implements CognitoAction<Person, SignUpResult> {
 
     private final AWSCognitoIdentityProvider identityProvider;
 
-    public SignUp(CognitoClientSupplier clientSupplier){
-        identityProvider = clientSupplier.get();
+    public SignUp() {
+        this(CognitoIdentityProviderFactory.createIdentityProvider());
     }
 
-    public ResultWrapper<SignUpResult> perform(Person person) {
+    public SignUp(AWSCognitoIdentityProvider identityProvider) {
+        this.identityProvider = identityProvider;
+    }
+
+    public SignUpResult perform(Person person) {
         SignUpRequest signUpRequest = createSignUpRequest(person);
-        return ResultWrapper.wrap(identityProvider.signUp(signUpRequest));
+        return identityProvider.signUp(signUpRequest);
     }
 
     private SignUpRequest createSignUpRequest(Person person) {
         return new SignUpRequest()
-                .withClientId(Environment.getClientID())
+                .withClientId(CognitoEnvironment.getClientID())
                 .withUsername(person.getUsername())
                 .withPassword(person.getPassword())
                 .withUserAttributes(
