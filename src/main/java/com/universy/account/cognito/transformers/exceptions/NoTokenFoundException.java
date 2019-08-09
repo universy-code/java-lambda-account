@@ -1,4 +1,4 @@
-package com.universy.account.cognito.extractor.exceptions;
+package com.universy.account.cognito.transformers.exceptions;
 
 import com.universy.lambda.api.handlers.exceptions.BusinessException;
 

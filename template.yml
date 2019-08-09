@@ -11,6 +11,7 @@ Resources:
         Variables:
           AWS_COGNITO_REGION: us-east-1
           CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
+          STAGE: qa
 
   verifyPost:
     Type: AWS::Serverless::Function
@@ -24,6 +25,7 @@ Resources:
         Variables:
           AWS_COGNITO_REGION: us-east-1
           CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
+          STAGE: qa
 
   verifyGet:
     Type: AWS::Serverless::Function
@@ -37,6 +39,7 @@ Resources:
         Variables:
           AWS_COGNITO_REGION: us-east-1
           CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
+          STAGE: qa
 
   logInPost:
     Type: AWS::Serverless::Function
@@ -48,6 +51,6 @@ Resources:
       Timeout: 300
       Environment:
         Variables:
-          AWS_REGION: sa-east-1
           AWS_COGNITO_REGION: us-east-1
           CLIENT_ID: 4rdnacs24atdg84gkjs63g3f21
+          STAGE: qa

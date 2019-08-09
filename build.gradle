@@ -23,7 +23,6 @@ dependencies {
     // AWS SDK
     compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: awsLambdaJavaCoreVersion
     compile group: 'com.amazonaws', name: 'aws-lambda-java-log4j2', version: awsLambdaJavaLog4j2Version
-    compile group: 'com.amazonaws', name: 'aws-java-sdk-cognitoidp', version: awsJavaSdkCognitoIdpVersion
 
     // Log4j2
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4JVersion

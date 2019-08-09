@@ -17,7 +17,7 @@ provider:
       Resource: "*"
   environment:
     STAGE: ${self:provider.stage}
-    CLIENT_ID: ${env:POOL_ID}
+    CLIENT_ID: ${env:CLIENT_ID, opt:client-id}
     AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION, 'us-east-1'}
 
 package:
@@ -26,16 +26,16 @@ package:
 functions:
   loginPost:
     name: ${self:provider.stage}-${self:service}-login-post
-    handler: com.universy.auth.handler.login.LogInPostHandler
+    handler: com.universy.account.handler.login.LogInPostHandler
 
   logonPost:
     name: ${self:provider.stage}-${self:service}-logon-post
-    handler: com.universy.auth.handler.logon.LogOnPostHandler
+    handler: com.universy.account.handler.logon.LogOnPostHandler
 
   verifyPost:
     name: ${self:provider.stage}-${self:service}-verify-post
-    handler: com.universy.auth.handler.verify.VerifyPostHandler
+    handler: com.universy.account.handler.verify.VerifyPostHandler
 
   verifyGet:
     name: ${self:provider.stage}-${self:service}-verify-get
-    handler: com.universy.auth.handler.verify.VerifyGetHandler
+    handler: com.universy.account.handler.verify.VerifyGetHandler
