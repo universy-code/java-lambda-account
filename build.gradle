@@ -1,4 +1,6 @@
+apply plugin: 'jacoco'
 apply plugin: 'java'
+
 
 allprojects{
     repositories {
@@ -55,6 +57,17 @@ jar {
     }
 }
 
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
 task copyClassesToLocalRunFolder(type: Copy) {
     from(sourceSets.main.output) {
         exclude "META-INF/*.SF"
@@ -93,5 +106,6 @@ task buildZip(type: Zip) {
 }
 
 build.dependsOn buildZip
-
+build.dependsOn jacocoTestReport
+jacocoTestReport.mustRunAfter test
 
