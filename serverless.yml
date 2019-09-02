@@ -4,7 +4,7 @@ service: java-lambda-account
 provider:
   name: aws
   runtime: java8
-  profile: ${env:PROFILE, 'serverless'}
+  profile: ${env:PROFILE, 'uvsy-sls-dev'}
   stage: ${opt:stage, 'dev'}
   region: ${env:REGION, 'sa-east-1'}
   iamRoleStatements:
@@ -17,8 +17,8 @@ provider:
       Resource: "*"
   environment:
     STAGE: ${self:provider.stage}
-    CLIENT_ID: ${env:CLIENT_ID, opt:client-id}
-    AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION, 'us-east-1'}
+    CLIENT_ID: ${ssm:/${self:provider.stage}/cognito/clients/universy_mobile_client_id~true}
+    AWS_COGNITO_REGION: ${ssm:/${self:provider.stage}/cognito/region~true}
 
 package:
   artifact: build/distributions/${self:service}-1.0.zip
