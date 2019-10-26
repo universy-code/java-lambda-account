@@ -9,7 +9,7 @@ allprojects{
     }
 }
 
-group 'com.universy'
+group 'app.universy'
 version '1.0'
 
 
