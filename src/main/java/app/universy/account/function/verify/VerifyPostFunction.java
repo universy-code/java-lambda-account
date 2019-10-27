@@ -17,7 +17,7 @@ import com.universy.cognito.actions.CognitoAction;
 
 import java.util.function.Function;
 
-@APIHandler(method = APIMethod.POST, inputSource = InputSource.QUERY_PARAMS, path = "/universy/account/verify")
+@APIHandler(method = APIMethod.POST, path = "/universy/account/verify")
 public class VerifyPostFunction implements Function<SignUpConfirmation, Token> {
 
     private final CognitoAction<SignUpConfirmation, ConfirmSignUpResult> signUpAction;
