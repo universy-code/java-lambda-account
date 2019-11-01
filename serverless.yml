@@ -26,18 +26,6 @@ package:
   artifact: build/distributions/${self:service}-1.0.zip
 
 functions:
-  loginPost:
-    name: ${self:provider.stage}-${self:service}-login-post
-    handler: com.universy.account.handler.login.LogInPostHandler
-
-  logonPost:
-    name: ${self:provider.stage}-${self:service}-logon-post
-    handler: com.universy.account.handler.logon.LogOnPostHandler
-
-  verifyPost:
-    name: ${self:provider.stage}-${self:service}-verify-post
-    handler: com.universy.account.handler.verify.VerifyPostHandler
-
-  verifyGet:
-    name: ${self:provider.stage}-${self:service}-verify-get
-    handler: com.universy.account.handler.verify.VerifyGetHandler
+  handler:
+    name: ${self:provider.stage}-${self:service}
+    handler: app.universy.account.Handler
