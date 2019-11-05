@@ -6,8 +6,9 @@ import app.universy.account.function.exceptions.UserNotFoundInPoolException;
 import app.universy.account.function.login.exceptions.UserNotAuthorizedException;
 import app.universy.account.model.Token;
 import app.universy.account.model.User;
-import app.universy.lambda.apigw.handler.APIHandler;
-import app.universy.lambda.apigw.handler.APIMethod;
+import app.universy.lambda.annotation.apigw.APIGatewayHandler;
+import app.universy.lambda.annotation.apigw.APIMethod;
+import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.InitiateAuthResult;
 import com.amazonaws.services.cognitoidp.model.NotAuthorizedException;
 import com.amazonaws.services.cognitoidp.model.UserNotFoundException;
@@ -15,13 +16,13 @@ import com.universy.cognito.actions.CognitoAction;
 
 import java.util.function.Function;
 
-@APIHandler(method = APIMethod.POST, path = "/universy/account/login")
+@APIGatewayHandler(method = APIMethod.POST, path = "/universy/account/login")
 public class LogInPostFunction implements Function<User, Token> {
 
     private final CognitoAction<User, InitiateAuthResult> initiateAuthAction;
 
-    public LogInPostFunction() {
-        this(new InitiateAuth());
+    public LogInPostFunction(AWSCognitoIdentityProvider identityProvider) {
+        this(new InitiateAuth(identityProvider));
     }
 
     public LogInPostFunction(CognitoAction<User, InitiateAuthResult> initiateAuthAction) {

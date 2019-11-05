@@ -12,10 +12,6 @@ public class ResendConfirmationCode implements CognitoAction<ResendConfirmation,
 
     private final AWSCognitoIdentityProvider identityProvider;
 
-    public ResendConfirmationCode() {
-        this(CognitoIdentityProviderFactory.createIdentityProvider());
-    }
-
     public ResendConfirmationCode(AWSCognitoIdentityProvider identityProvider) {
         this.identityProvider = identityProvider;
     }

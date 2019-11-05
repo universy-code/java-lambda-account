@@ -12,10 +12,6 @@ public class ConfirmSignUp implements CognitoAction<SignUpConfirmation, ConfirmS
 
     private final AWSCognitoIdentityProvider identityProvider;
 
-    public ConfirmSignUp() {
-        this(CognitoIdentityProviderFactory.createIdentityProvider());
-    }
-
     public ConfirmSignUp(AWSCognitoIdentityProvider identityProvider) {
         this.identityProvider = identityProvider;
     }

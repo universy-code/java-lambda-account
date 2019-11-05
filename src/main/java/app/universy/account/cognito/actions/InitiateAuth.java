@@ -17,10 +17,6 @@ public class InitiateAuth implements CognitoAction<User, InitiateAuthResult> {
 
     private final AWSCognitoIdentityProvider identityProvider;
 
-    public InitiateAuth() {
-        this(CognitoIdentityProviderFactory.createIdentityProvider());
-    }
-
     public InitiateAuth(AWSCognitoIdentityProvider identityProvider) {
         this.identityProvider = identityProvider;
     }

@@ -13,10 +13,6 @@ public class SignUp implements CognitoAction<Person, SignUpResult> {
 
     private final AWSCognitoIdentityProvider identityProvider;
 
-    public SignUp() {
-        this(CognitoIdentityProviderFactory.createIdentityProvider());
-    }
-
     public SignUp(AWSCognitoIdentityProvider identityProvider) {
         this.identityProvider = identityProvider;
     }

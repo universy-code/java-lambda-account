@@ -1,6 +1,7 @@
 package app.universy.account.function.verify.exceptions;
 
-import app.universy.lambda.apigw.exceptions.APIException;
+import app.universy.lambda.exceptions.apigw.APIException;
+import app.universy.lambda.exceptions.apigw.APIException;
 
 import java.net.HttpURLConnection;
 

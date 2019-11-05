@@ -1,6 +1,6 @@
 package app.universy.account.cognito.transformers.exceptions;
 
-import app.universy.lambda.apigw.exceptions.APIException;
+import app.universy.lambda.exceptions.apigw.APIException;
 
 import java.net.HttpURLConnection;
 
