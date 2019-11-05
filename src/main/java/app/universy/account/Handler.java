@@ -1,25 +1,36 @@
 package app.universy.account;
 
-import app.universy.account.function.logon.LogOnPostConsumer;
-import app.universy.lambda.apigw.handler.ProxyEventHandler;
-import app.universy.lambda.apigw.handler.StreamAPIGatewayHandler;
-import app.universy.lambda.apigw.handler.dispatcher.DispatchStrategy;
-import app.universy.lambda.apigw.handler.dispatcher.HandlerDispatcherBuilder;
 import app.universy.account.function.login.LogInPostFunction;
+import app.universy.account.function.logon.LogOnPostConsumer;
 import app.universy.account.function.verify.VerifyGetConsumer;
 import app.universy.account.function.verify.VerifyPostFunction;
+import app.universy.lambda.StreamLambdaHandler;
+import app.universy.lambda.handlers.apigw.dispatch.APIGatewayDispatchStrategy;
+import app.universy.lambda.handlers.apigw.dispatch.PathAndMethodDispatchStrategy;
+import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
+import com.universy.cognito.CognitoIdentityProviderFactory;
 
-public class Handler extends StreamAPIGatewayHandler {
+import java.util.List;
+
+public class Handler extends StreamLambdaHandler {
+
+    private AWSCognitoIdentityProvider identityProvider;
+
     @Override
-    protected ProxyEventHandler getProxyEventHandler() {
-        return new HandlerDispatcherBuilder()
-                .withHandlers(
-                        new LogInPostFunction(),
-                        new LogOnPostConsumer(),
-                        new VerifyGetConsumer(),
-                        new VerifyPostFunction()
-                )
-                .withDispatchStrategy(DispatchStrategy.PATH_AND_METHOD)
-                .build();
+    protected void beforeInit() {
+        identityProvider = CognitoIdentityProviderFactory.createIdentityProvider();
+    }
+
+    @Override
+    protected void registerHandlers(List<Object> handlers) {
+        handlers.add(new LogInPostFunction(identityProvider));
+        handlers.add(new LogOnPostConsumer(identityProvider));
+        handlers.add(new VerifyGetConsumer(identityProvider));
+        handlers.add(new VerifyPostFunction(identityProvider));
+    }
+
+    @Override
+    protected APIGatewayDispatchStrategy apiGatewayDispatchStrategy() {
+        return new PathAndMethodDispatchStrategy();
     }
 }

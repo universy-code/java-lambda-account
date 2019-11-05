@@ -1,7 +1,7 @@
 package app.universy.account.function.exceptions;
 
 import app.universy.account.model.UsernameContainer;
-import app.universy.lambda.apigw.exceptions.APIException;
+import app.universy.lambda.exceptions.apigw.APIException;
 
 import java.net.HttpURLConnection;
 
